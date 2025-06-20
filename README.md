@@ -1,3 +1,6 @@
+#ATS for Archimedes at VT
+
+copied from owenstuckman/luma
 
 ## Developing
 
@@ -11,7 +14,7 @@ npm run dev -- --open
 ```
 ### Supabase
 
-For security purposes, since I want to continue with this project, I am not including the anonkey and url.
+For security purposes, anonkey and url are not included in the base repo, and are gitignored.
 
 However, it is attached to the assignment / email me, and add it to .env.local to run any database functionalities, as otherwise things won't populate.
 
