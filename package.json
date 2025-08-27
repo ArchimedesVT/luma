@@ -6,6 +6,7 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
+		"deploy": "gh-pages -d build -t",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
@@ -24,6 +25,7 @@
 		"@sveltejs/vite-plugin-svelte": "^5.0.0",
 		"@tailwindcss/forms": "^0.5.9",
 		"@tailwindcss/vite": "^4.1.4",
+		"bootstrap": "^5.3.7",
 		"eslint": "^9.18.0",
 		"eslint-config-prettier": "^10.0.1",
 		"eslint-plugin-svelte": "^3.0.0",
@@ -32,6 +34,7 @@
 		"prettier": "^3.4.2",
 		"prettier-plugin-svelte": "^3.3.3",
 		"prettier-plugin-tailwindcss": "^0.6.11",
+		"sass": "^1.90.0",
 		"svelte": "^5.0.0",
 		"svelte-check": "^4.0.0",
 		"tailwindcss": "^4.1.4",
@@ -40,7 +43,12 @@
 		"vite": "^6.2.6"
 	},
 	"dependencies": {
+		"@schedule-x/calendar": "^2.36.0",
+		"@schedule-x/svelte": "^2.3.0",
+		"@schedule-x/theme-default": "^2.36.0",
 		"@supabase/ssr": "^0.6.1",
-		"@supabase/supabase-js": "^2.49.4"
+		"@supabase/supabase-js": "^2.49.4",
+		"@sveltejs/adapter-auto": "^6.1.0",
+		"@sveltejs/adapter-vercel": "^5.10.2"
 	}
 }
