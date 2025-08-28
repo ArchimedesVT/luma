@@ -4,7 +4,7 @@
   import Footer from "$lib/components/applicant/Footer.svelte";
   import AvailabilityGrid from "$lib/components/applicant/AvailabilityGrid.svelte";
 
-  let ranges: string[] = [];
+  let ranges: string[] = JSON.parse(localStorage.getItem('availability') || '[]');
   
   const onChange = (event: CustomEvent) => {
     ranges = event.detail.ranges;
