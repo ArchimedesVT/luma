@@ -55,7 +55,7 @@
     />
 
     <InputArea
-      title="The email associated with this application is not in our interest meeting attendance records. Please provide a brief reason for your absence."
+      title="If you were not able to attend one of our interest meetings, please provide a brief reason for your absence."
       subtitle="Optional: Maximum 50 words"
       id="frq4"
       bind:value={absenceExcuse}

@@ -28,7 +28,7 @@
         Schedule
       </a>
       <div class={collapse} id="submenuSchedule">
-        <ul class="list-unstyled sidebar-submenu">
+        <ul class="sidebar-submenu">
           <li><a href="/private/recruiter/schedule/my_schedule" class:submenu-selected={currentStep === 2}>My Schedule</a></li>
           <li><a href="/private/recruiter/schedule/full_schedule" class:submenu-selected={currentStep === 3}>Full Schedule</a></li>
         </ul>
@@ -68,6 +68,7 @@
     padding-left: 20px;
     border-left: 2px $light-tertiary solid;
     transition: border 0.2s ease;
+    color:$light-tertiary
   }
   .sidebar-submenu li:hover {
     border-left: 2px white solid;
