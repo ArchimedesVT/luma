@@ -4,7 +4,8 @@
   import Footer from "$lib/components/applicant/Footer.svelte";
   import AvailabilityGrid from "$lib/components/applicant/AvailabilityGrid.svelte";
 
-  let ranges: string[] = JSON.parse(localStorage.getItem('availability') || '[]');
+  type Range = { date: string; start: string; end: string };
+  let ranges: Range[] = JSON.parse(localStorage.getItem('availability') || '[]');
   
   const onChange = (event: CustomEvent) => {
     ranges = event.detail.ranges;
@@ -23,6 +24,7 @@
       endDate="2025-09-15" 
       dayStart="10:00" 
       dayEnd="17:00" 
+      initialRanges={ranges}
       on:change={onChange} 
     />
 

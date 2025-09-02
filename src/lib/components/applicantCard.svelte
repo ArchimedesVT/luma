@@ -3,7 +3,17 @@
     import { getAllApplicants } from '$lib/utils/supabase';
     import { goto } from '$app/navigation';
 
-    let applicants: { id: number; name: string; created_at: string }[] = [];
+    let applicants: { 
+        id: number; 
+        name: string; 
+        created_at: string; 
+        comments: { 
+            id: number; 
+            email: string; 
+            comment: string; 
+            decision: string; 
+        }[]; // Expanded comments to include detailed structure
+    }[] = [];
     let searchQuery: string = ''; // New variable for search input
 
     onMount(async () => {
@@ -31,13 +41,14 @@
         bind:value={searchQuery} 
         class="w-full border border-gray-300 rounded p-2"
     />
-</div>
+</div>  
 
-<div class="grid grid-cols-3 gap-4">
+<div class="grid grid-cols-4 gap-4">
     {#each filteredApplicants as applicant}
         <div class="border border-gray-300 rounded-lg p-4 shadow cursor-pointer" on:click={() => navigateToReview(applicant.id)}>
             <h2 class="text-sm mb-2 text-black">{applicant.name}</h2>
             <p class="text-sm text-gray-600">Submitted at: {new Date(applicant.created_at).toLocaleString()}</p>
+            <p>Comments Count: {applicant.comments.length}</p>
         </div>
     {/each}
 </div>

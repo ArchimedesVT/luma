@@ -5,6 +5,9 @@
      * AvailabilityGrid.svelte — pointer-based interactions
      * Supports: single click/tap, click-drag/pen-drag paint/erase
      * Avoids double-toggles by applying action on pointerup when no drag
+     * 
+     * This component binds the selected availability slots to the `selected` prop
+     * and exports the current ranges via the `on:change` event.
      */
   
     type Range = { date: string; start: string; end: string };
@@ -120,7 +123,9 @@
     }
   
     function emitChange() {
-      dispatch('change', { slots: Array.from(selected).sort(), ranges: currentRanges() });
+      const ranges = currentRanges();
+      dispatch('change', { slots: Array.from(selected).sort(), ranges });
+      localStorage.setItem('availability', JSON.stringify(ranges)); // Store as JSON string
     }
   
     export function getSelectedRanges(): Range[] { return currentRanges(); }
@@ -283,4 +288,3 @@
       </div>
     {/each}
   </div>
-  

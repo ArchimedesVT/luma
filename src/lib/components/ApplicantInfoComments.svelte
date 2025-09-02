@@ -37,16 +37,17 @@
 
 {#if applicantData && applicantData.length > 0} <!-- Check if applicantData is not empty -->
     <div class="applicant-details p-4 border border-gray-300 rounded-lg bg-gray-100 text-black">
-        <h2 class="text-xl font-semibold">Applicant Details</h2>
+        <h2 class="text-l font-weight: bold">Applicant Details</h2>
         <p><strong>Name:</strong> {applicantData[0].name}</p>
         <p><strong>Email:</strong> {applicantData[0].email}</p>
         <p><strong>Answers to Application Questions:</strong></p>
-        <div class="recruit-info mt-2 bg-gray-200 p-2 rounded">
-            <ul>
-                {#each Object.entries(applicantData[0].recruitInfo) as [key, value]}
-                    <li>{key}:<br><br>{value}</li><br>
-                {/each}
-            </ul>
+        <div class="recruit-info mt-2">
+            {#each Object.entries(applicantData[0].recruitInfo) as [key, value]}
+                <div class="question-answer-box bg-gray-200 p-4 rounded mb-2">
+                    <p style="font-weight: bold;">{key}:</p>
+                    <p class="ml-2">{value}</p>
+                </div>
+            {/each}
         </div>
         <p class="mt-4"><strong>Comments:</strong></p>
         <div class="comments-info mt-2 bg-gray-200 p-2 rounded">
