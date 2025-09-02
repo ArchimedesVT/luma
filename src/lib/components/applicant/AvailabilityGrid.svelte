@@ -22,6 +22,7 @@
     export let timezone: string = Intl.DateTimeFormat().resolvedOptions().timeZone;
     export let initialRanges: Range[] = [];
     export let dense = false; // tighter row height
+    export let disabledRanges: Range[] = []; // Changed from disabledSlots to disabledRanges
   
     const dispatch = createEventDispatcher();
   
@@ -144,13 +145,21 @@
     function applyPaint(date: string, time: string) {
       const id = slotId(date, time);
       if (addMode) {
-        if (!selected.has(id)) { selected.add(id); selected = new Set(selected); }
+        if (!selected.has(id) && !isSlotDisabled(date, time)) { 
+          selected.add(id); 
+          selected = new Set(selected); 
+        }
       } else {
         if (selected.has(id)) { selected.delete(id); selected = new Set(selected); }
       }
     }
+
+    function isSlotDisabled(date: string, time: string): boolean {
+      return disabledRanges.some(range => range.date === date && time >= range.start && time < range.end);
+    }
   
     function pointerDown(e: PointerEvent, date: string, time: string) {
+      if (isSlotDisabled(date, time)) return; // Prevent interaction on disabled slots
       isDown = true;
       dragged = false;
       appliedStartOnDrag = false;
@@ -161,7 +170,7 @@
     }
   
     function pointerEnter(date: string, time: string) {
-      if (!isDown) return;
+      if (!isDown || isSlotDisabled(date, time)) return; // Prevent interaction on disabled slots
       if (!appliedStartOnDrag && startCell) {
         const [sd, st] = startCell.split('|');
         applyPaint(sd, st);
@@ -192,6 +201,7 @@
     // keyboard support: space/enter toggles focused cell
     let focusId: SlotId | null = null;
     function keyToggle(e: KeyboardEvent, date: string, time: string) {
+      if (isSlotDisabled(date, time)) return; // Prevent interaction on disabled slots
       if (e.key === ' ' || e.key === 'Enter') {
         e.preventDefault();
         const id = slotId(date, time);
@@ -239,6 +249,7 @@
     .cell { height: var(--cell); border-right: 1px solid var(--border); border-bottom: 1px dotted var(--border); cursor: pointer; position: relative; touch-action: none; }
     .cell.dense { height: 24px; }
     .cell.sel { background: var(--sel); }
+    .cell.disabled { background: #e5e7eb; cursor: not-allowed; } /* Style for disabled cells */
     .cell:focus { outline: 2px solid var(--selEdge); outline-offset: -2px; }
     .datehdr { padding: 10px; text-align:center; font-weight:600; border-right: 1px solid var(--border); }
     .controls { display:flex; gap:8px; align-items:center; margin-bottom: 8px; flex-wrap: wrap; }
@@ -272,7 +283,7 @@
         {#each dates as d}
           {#key `${d}|${t}`}
             <div
-              class="cell {dense ? 'dense' : ''} {selected.has(`${d}|${t}`) ? 'sel' : ''}"
+              class="cell {dense ? 'dense' : ''} {selected.has(`${d}|${t}`) ? 'sel' : ''} {isSlotDisabled(d, t) ? 'disabled' : ''}"
               role="button"
               aria-pressed={selected.has(`${d}|${t}`)}
               aria-label={`Toggle ${d} ${t}`}

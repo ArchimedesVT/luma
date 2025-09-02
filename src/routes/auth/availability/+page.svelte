@@ -5,7 +5,7 @@
     import { goto } from "$app/navigation";
 
     type Range = { date: string; start: string; end: string };
-    let ranges: Range[] =  [];
+    let ranges: Range[] = [];
 
     const onChange = (event: CustomEvent) => {
         ranges = event.detail.ranges;
@@ -15,7 +15,7 @@
         const newEmail = await getCurrentUserEmail();
         const { data, error } = await supabase
             .from("interviewers")
-            .update({metadata: JSON.stringify(ranges) })
+            .update({ metadata: JSON.stringify(ranges) })
             .eq('email', newEmail);
 
         if (error) {
@@ -27,8 +27,7 @@
         goto(`/`);
 
         return data;
-
-    }
+    };
 </script>
 
 <div class="layout">
@@ -36,13 +35,18 @@
         <h4>Select Your Availability</h4>
 
         <AvailabilityGrid 
-            stepMinutes={15} 
+            stepMinutes={30} 
             startDate="2025-09-11" 
             endDate="2025-09-15" 
-            dayStart="10:00" 
-            dayEnd="17:00" 
+            dayStart="09:00" 
+            dayEnd="21:00" 
             initialRanges={ranges}
             on:change={onChange} 
+            disabledRanges={[
+                { date: '2025-09-11', start: '09:00', end: '17:00' },
+                { date: '2025-09-12', start: '09:00', end: '17:00' },
+                { date: '2025-09-15', start: '09:00', end: '17:00' }
+            ]}
         />
         
         <button on:click={onSubmit} class="btn btn-primary">Submit Availability</button>
