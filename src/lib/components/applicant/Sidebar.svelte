@@ -21,10 +21,10 @@
         goto(`/applicant/5_free_response`);
         break;
       case 5:
-        goto(`/applicant/review`);
+        goto(`/applicant/6_review`);
         break;
       case 6:
-        goto(`/applicant/submit`);
+        goto(`/applicant/7_submit`);
         break;
       default:
         break;
