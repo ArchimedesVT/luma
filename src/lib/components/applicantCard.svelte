@@ -32,6 +32,35 @@
     $: filteredApplicants = applicants.filter(applicant => 
         applicant.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
+
+    let commentsBool: boolean = false;
+    // threshold for ammount of required comments
+    let commentsThreshold: number = 1;
+
+    // Filter applicants when selected 
+    async function filterApplicants(): Promise<boolean> {
+        commentsBool = !commentsBool;
+
+        if (commentsBool) {
+            filteredApplicants = applicants.filter(applicant => 
+                applicant.comments.comments.length <= commentsThreshold
+            );
+        } else {
+            try {
+                applicants = await getAllApplicants();
+            } catch (error) {
+                console.error('Failed to load applicants:', error);
+            }
+
+            filteredApplicants = applicants.filter(applicant => 
+                applicant.name.toLowerCase().includes(searchQuery.toLowerCase())
+            );
+        }
+        
+        return commentsBool;
+    }
+
+
 </script>
 
 <div class="mb-4">
@@ -41,6 +70,9 @@
         bind:value={searchQuery} 
         class="w-full border border-gray-300 rounded p-2"
     />
+
+    <button class="btn btn-primary" on:click={filterApplicants}>Show Which Require Review</button>
+
 </div>  
 
 <div class="grid grid-cols-4 gap-4">
@@ -48,7 +80,7 @@
         <div class="border border-gray-300 rounded-lg p-4 shadow cursor-pointer" on:click={() => navigateToReview(applicant.id)}>
             <h2 class="text-sm mb-2 text-black">{applicant.name}</h2>
             <p class="text-sm text-gray-600">Submitted at: {new Date(applicant.created_at).toLocaleString()}</p>
-            <p>Comments Count: {applicant.comments.length}</p>
+            <p>Comments Count: {applicant.comments.comments.length}</p>
         </div>
     {/each}
 </div>
