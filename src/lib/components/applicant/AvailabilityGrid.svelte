@@ -126,7 +126,6 @@
     function emitChange() {
       const ranges = currentRanges();
       dispatch('change', { slots: Array.from(selected).sort(), ranges });
-      localStorage.setItem('availability', JSON.stringify(ranges)); // Store as JSON string
     }
   
     export function getSelectedRanges(): Range[] { return currentRanges(); }

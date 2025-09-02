@@ -2,7 +2,6 @@ import { createBrowserClient } from '@supabase/ssr';
 import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY } from '$env/static/public';
 
 /*
-
 Utility functions for supabase.
 - More or less all the db functions needed for the application 
 
