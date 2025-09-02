@@ -1,0 +1,71 @@
+<div class="login-screen">
+    <form method="POST" action="?/signup" class="login">
+      <div class="login-top">
+        <h2>Recruiter Account Creation</h2>
+        <label>
+          Email
+          <input name="email" type="email" class="form-control input-dark" placeholder="Email" />
+        </label>
+        <label>
+          Password
+          <input name="password" type="password" class="form-control input-dark" placeholder="Password" />
+        </label>
+        <div style="display: flex; gap: 10px; margin-top: 8px;">
+          <a href="/">
+            <button type="button" class="btn btn-primary">Back</button>
+          </a>
+          <button type="submit" class="btn btn-primary">Sign up</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  
+  <style lang="scss">
+    @use '../../../styles/col.scss' as *;
+  
+    .login-screen {
+      display: flex;
+      background: $yellow-primary;
+      background: linear-gradient(90deg, rgba(255, 153, 0, 1) 0%, rgba(255, 200, 0, 1) 100%);
+      justify-content: center;
+      align-items: center;
+      width: 100vw;
+      height: 100vh;
+    }
+    .login {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background-color: $dark-primary;
+      border-radius: 10px;
+      width: 40vw;
+      padding: 30px;
+      overflow-y: auto;
+    }
+    .login-top {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      justify-items: center;
+      align-items: center;
+      gap: 15px;
+    }
+    .login-bottom {
+      display: flex;
+      justify-content: center;
+      align-items: end;
+    }
+  
+    .input-dark {
+      background-color: $dark-primary;
+      border-color: $light-tertiary;
+      width: 75%;
+      color: white;
+    }
+    .input-dark:focus, .input-dark:active {
+      background-color: $dark-primary;
+      box-shadow: none;
+      border-color: $yellow-primary;
+      color: white;
+    }
+  </style>

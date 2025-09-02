@@ -15,12 +15,7 @@
           <button type="button" class="btn btn-primary">Back</button>
         </a>
         <button type="submit" class="btn btn-primary">Login</button>
-        <button formaction="?/signup" class="btn btn-primary">Sign up</button>
       </div>
-    </div>
-    <div class="login-bottom">
-      <p style="color: white; margin-bottom: -2px; margin-top: 50px;">Don't have an account?&nbsp;</p>
-      <a style="color:white;" href="/recruiter/request_access" class="underline">Request LUMA access</a>
     </div>
   </form>
 </div>

@@ -8,7 +8,7 @@ Utility functions for supabase.
 
  */
 
-const supabase = createBrowserClient(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY); // Updated to createBrowserClient
+export const supabase = createBrowserClient(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY); // Updated to createBrowserClient
 
 export const getActiveRoles = async () => {
     const { data, error } = await supabase
