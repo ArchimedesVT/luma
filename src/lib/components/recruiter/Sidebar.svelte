@@ -1,6 +1,5 @@
 <script>
   export let currentStep = 0;
-  export let collapse = "collapse";
 </script>
 
 <div class="sidebar hide-on-small">
@@ -20,15 +19,13 @@
     <li>
       <a class="btn btn-secondary btn-sidebar"
         class:sidebar-selected={currentStep >= 2 && currentStep <= 4}
-        data-bs-toggle="collapse"
-        href="#submenuSchedule"
         style="cursor: pointer !important;"
       >
         <i class="fi fi-br-calendar-clock"></i>
         Schedule
       </a>
-      <div class={collapse} id="submenuSchedule">
-        <ul class="sidebar-submenu">
+      <div class="sidebar-submenu" id="submenuSchedule">
+        <ul>
           <li><a href="/private/recruiter/schedule/my_schedule" class:submenu-selected={currentStep === 2}>My Schedule</a></li>
           <li><a href="/private/recruiter/schedule/full_schedule" class:submenu-selected={currentStep === 3}>Full Schedule</a></li>
         </ul>
@@ -59,6 +56,9 @@
     align-items: center;
     padding-top: 5px;
     background-color: $dark-primary;
+  }
+  .sidebar-submenu {
+    display: block; // Always visible
   }
   .sidebar-submenu li {
     align-content: center;
