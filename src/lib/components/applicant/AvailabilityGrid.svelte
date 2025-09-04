@@ -8,6 +8,8 @@
      * 
      * This component binds the selected availability slots to the `selected` prop
      * and exports the current ranges via the `on:change` event.
+     * 
+     * Additionally can handle displaying current appointments/scheduled things 
      */
   
     type Range = { date: string; start: string; end: string };
@@ -17,12 +19,13 @@
     export let startDate: Date | string;
     export let endDate: Date | string;
     export let dayStart = '09:00';
-    export let dayEnd = '17:00';
-    export let stepMinutes = 30;
+    export let dayEnd = '17:00';    export let stepMinutes = 30;
     export let timezone: string = Intl.DateTimeFormat().resolvedOptions().timeZone;
     export let initialRanges: Range[] = [];
     export let dense = false; // tighter row height
     export let disabledRanges: Range[] = []; // Changed from disabledSlots to disabledRanges
+    export let appointmentRanges: Range[] = [];
+    export let appointmentText: string[] = [];
   
     const dispatch = createEventDispatcher();
   
