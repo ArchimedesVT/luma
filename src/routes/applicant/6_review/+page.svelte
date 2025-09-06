@@ -15,7 +15,12 @@
       if (value === undefined || value === null || value === "" || (Array.isArray(value) && value.length === 0)){
         warnings.push(key);
       }
-      recruitInfo[key] = value;
+      else if (key == "The email associated with this application is not in our interest meeting attendance records. Please provide a brief reason for your absence."){
+
+      }
+      else{
+        recruitInfo[key] = value;
+      }
     });
     warnings = [...warnings];
   });
