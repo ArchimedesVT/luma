@@ -33,9 +33,10 @@
         applicant.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
+    // toggle for the button
     let commentsBool: boolean = false;
     // threshold for ammount of required comments
-    let commentsThreshold: number = 1;
+    let commentsThreshold: number = 2;
 
     // Filter applicants when selected 
     async function filterApplicants(): Promise<boolean> {
