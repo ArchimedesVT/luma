@@ -56,7 +56,7 @@
                     {#each commentsArray as comment}
                         <li>
                             <strong>{comment.email}</strong>: {comment.comment} <br>
-                            <em>Decision: {comment.decision}</em>
+                            <em style="color: {comment.decision.toLowerCase() == 'Approved' ? 'green' : 'inherit'};">Decision: {comment.decision}</em>
                         </li>
                     {/each}
                 </ul>

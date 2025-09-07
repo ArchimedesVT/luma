@@ -2,7 +2,7 @@
     import { onMount } from 'svelte';
     import { getAllApplicants } from '$lib/utils/supabase';
     import { goto } from '$app/navigation';
-	import BackButton from './backButton.svelte';
+    import BackButton from './backButton.svelte';
 
     let applicants: {
         id: number;
@@ -95,7 +95,7 @@
 
         if (newApplicant && newApplicant.comments) {
             for (const comment of newComments) {
-                if (comment.decision == "Denied") {
+                if (comment.decision == "Rejected") {
                     count++;
                 }
             }
@@ -115,8 +115,8 @@
             );
             if (commentsBool) {
                 filteredApplicants = filteredApplicants.filter(applicant =>
-                applicant.comments.comments.length <= commentsThreshold
-            );
+                    applicant.comments.comments.length <= commentsThreshold
+                );
             }
         } else {
             try {
@@ -142,8 +142,8 @@
             );
             if (acceptedBool) {
                 filteredApplicants = filteredApplicants.filter(applicant =>
-                getAcceptedCount(applicant) < acceptedThreshold
-            );
+                    getAcceptedCount(applicant) < acceptedThreshold
+                );
             }
         } else {
             try {
