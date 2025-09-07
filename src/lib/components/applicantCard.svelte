@@ -55,6 +55,10 @@
 
     // Toggle for the button
     let commentsBool: boolean = false;
+    // toggle for accepted
+
+    let acceptedBool: boolean = false;
+
     // Threshold for amount of required comments
     let commentsThreshold: number = 2;
 
@@ -109,9 +113,10 @@
         class="w-full border border-gray-300 rounded p-2"
     />
 
-    <button class="btn btn-primary" on:click={filterApplicants}>
+    <button class:bg-green-500={commentsBool} class:bg-red-500={!commentsBool} on:click={filterApplicants}>
         Show Which Require Review
     </button>
+
 </div>
 
 <div class="grid grid-cols-4 gap-4">

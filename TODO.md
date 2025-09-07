@@ -1,3 +1,6 @@
 
 
-- [ ] move free response before availability 
+
+
+- [ ] make buttons update colors
+- [ ] filter out accepted applicants 
