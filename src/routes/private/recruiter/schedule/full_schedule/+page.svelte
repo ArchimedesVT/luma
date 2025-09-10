@@ -51,15 +51,7 @@
     <h4 style="text-align: left;">Full Schedule</h4>
 
     <h1> STILL UNDER CONSTRUCTION </h1>
-    <ScheduleGrid
-      stepMinutes={10}
-      startDate="2025-09-11"
-      endDate="2025-09-15"
-      dayStart="09:00"
-      dayEnd="21:00"
-      appointmentRanges={interviewRanges}
-      appointmentText={interviewStrings}
-    />
+
   </div>
 
   <Navbar />
