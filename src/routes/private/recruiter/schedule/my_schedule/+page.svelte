@@ -50,8 +50,17 @@
 <div class="layout">
   <div class="content-left">
     <h4 style="text-align: left;">Full Schedule</h4>
+
+    <ul>
+      {#each interviewRanges as range, index}
+        {#if index === 0 || range.start !== interviewRanges[index - 1].start}
+          <li>{interviewStrings[index]} - {range.date} from {range.start} to {range.end}</li>
+        {/if}
+      {/each}
+    </ul>
+
     <ScheduleGrid
-      stepMinutes={30}
+      stepMinutes={10}
       startDate="2025-09-11"
       endDate="2025-09-15"
       dayStart="09:00"
@@ -59,7 +68,10 @@
       appointmentRanges={interviewRanges}
       appointmentText={interviewStrings}
     />
+
   </div>
+
+
 
   <Navbar />
   <Sidebar currentStep={2} />

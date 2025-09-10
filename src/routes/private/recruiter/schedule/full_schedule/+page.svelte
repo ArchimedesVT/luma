@@ -52,7 +52,7 @@
 
     <h1> STILL UNDER CONSTRUCTION </h1>
     <ScheduleGrid
-      stepMinutes={30}
+      stepMinutes={10}
       startDate="2025-09-11"
       endDate="2025-09-15"
       dayStart="09:00"
